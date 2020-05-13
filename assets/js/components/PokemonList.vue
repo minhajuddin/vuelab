@@ -1,22 +1,25 @@
 <template>
-
-<ul>
-<li v-for='pokemon in pokemons' :key="pokemon.id">
-{{pokemon.name}}
-</li>
-</ul>
-
+<div>
+  <ul>
+    <li v-for='pokemon in pokemons' @click='selectPokemon(pokemon)'>
+      {{ pokemon.name }}
+    </li>
+  </ul>
+</div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      pokemons: [
-      {id: 1, name: "Bulbasaur"},
-      {id: 2, name: "Doraemon"}
-      ]
-    }
-  }
+  props: ['pokemons', 'selectPokemon']
 }
 </script>
+
+<style scoped>
+ul {
+  list-style: none;
+}
+li {
+  padding: 5px 10px;
+  background-color: #0074D9;
+}
+</style>

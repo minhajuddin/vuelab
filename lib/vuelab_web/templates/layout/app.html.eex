@@ -13,12 +13,6 @@
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
       <%= @inner_content %>
-      <footer>
-        <ul>
-          <li>&copy; Hyperngn, Inc.</li>
-          <li> 2020 </li>
-        </ul>
-      </footer>
     </main>
   </body>
 </html>
