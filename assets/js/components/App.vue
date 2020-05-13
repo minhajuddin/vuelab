@@ -1,12 +1,12 @@
 <template>
 <div>
   <Message :message='message' />
-  <div className="container">
-    <div className="row">
-      <div className="column">
+  <div class="container">
+    <div class="row">
+      <div class="column">
         <PokemonList :pokemons='pokemons' :selectPokemon='selectPokemon' />
       </div>
-      <div className="column-50">
+      <div class="column column-50">
         <PokemonDetails :pokemon='selectedPokemon' />
       </div>
     </div>
@@ -24,16 +24,39 @@ export default {
     return {
       message: "Welcome to your TODO list",
       pokemons: [{
-        name: 'Bulbasaur'
-      }],
+        name: 'Bulbasaur',
+        size: 'big'
+      },{
+        name: 'Doraemon',
+        size: 'small'
+      }
+      ],
       selectedPokemon: undefined
     }
   },
   methods: {
     selectPokemon(pokemon){
-      this.selectedPokemon = pokemon
+      this.message = `Getting ${pokemon.name}...`
+      fetch(pokemon.url)
+      .then(x => x.json())
+      .then(x => {
+        this.selectedPokemon = x
+        this.message = 'Pokemon ready'
+        })
+    },
+    getPokemons(){
+      this.message = "Getting your pokemons ..."
+      fetch("https://pokeapi.co/api/v2/pokemon")
+      .then(x => x.json())
+      .then(x => {
+        this.message = 'Pokemons loaded'
+        this.pokemons = x.results
+      })
     }
   },
+ created(){
+   this.getPokemons()
+ },
   components: {
     Message,
     PokemonList,
