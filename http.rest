@@ -1,0 +1,10 @@
+https://pokeapi.co
+
+-qs
+
+--
+
+--
+
+GET /api/v2/pokemon
+

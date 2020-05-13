@@ -15,8 +15,8 @@ import "../css/app.scss"
 import "phoenix_html"
 
 import Vue from "vue"
-import Message from "./components/Message.vue"
+import App from "./components/App.vue"
 
 new Vue({
-  render: h => h(Message)
+  render: h => h(App)
 }).$mount("#app")
