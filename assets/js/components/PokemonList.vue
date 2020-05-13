@@ -10,7 +10,13 @@
 
 <script>
 export default {
-  props: ['pokemons', 'selectPokemon']
+  props: ['pokemons'],
+         methods: {
+           selectPokemon(pokemon){
+             console.log("selecting pokemon")
+             this.$emit('selectPokemon', pokemon)
+           }
+         }
 }
 </script>
 
