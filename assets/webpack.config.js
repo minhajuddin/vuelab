@@ -4,6 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const { VueLoaderPlugin } = require('vue-loader');
 
 module.exports = (env, options) => {
   const devMode = options.mode !== 'production';
@@ -27,6 +28,13 @@ module.exports = (env, options) => {
     module: {
       rules: [
         {
+          test: /\.vue/,
+          exclude: /node_modules/,
+          use: {
+            loader: 'vue-loader'
+          }
+        },
+        {
           test: /\.js$/,
           exclude: /node_modules/,
           use: {
@@ -45,7 +53,8 @@ module.exports = (env, options) => {
     },
     plugins: [
       new MiniCssExtractPlugin({ filename: '../css/app.css' }),
-      new CopyWebpackPlugin([{ from: 'static/', to: '../' }])
+      new CopyWebpackPlugin([{ from: 'static/', to: '../' }]),
+      new VueLoaderPlugin()
     ]
   }
 };
