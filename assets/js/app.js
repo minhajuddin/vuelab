@@ -15,7 +15,10 @@ import "../css/app.scss"
 import "phoenix_html"
 
 import Vue from "vue"
+import Buefy from "buefy"
 import App from "./components/App.vue"
+
+Vue.use(Buefy)
 
 new Vue({
   render: h => h(App)

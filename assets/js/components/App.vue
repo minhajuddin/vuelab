@@ -7,7 +7,7 @@
         <PokemonList :pokemons='pokemons' :selectPokemon='selectPokemon' />
       </div>
       <div class="column column-50">
-        <PokemonDetails :pokemon='selectedPokemon' />
+        <PokemonDetails :pokemon='selectedPokemon' @savePokemon='save' />
       </div>
     </div>
   </div>
@@ -36,7 +36,8 @@ export default {
   },
   methods: {
     selectPokemon(pokemon){
-      this.message = `Getting ${pokemon.name}...`
+      this.$buefy.toast.open({message: `Getting ${pokemon.name}...`, type: 'is-success'})
+      /*this.message = `Getting ${pokemon.name}...`*/
       fetch(pokemon.url)
       .then(x => x.json())
       .then(x => {
@@ -52,6 +53,11 @@ export default {
         this.message = 'Pokemons loaded'
         this.pokemons = x.results
       })
+    },
+    save(pokemon){
+      this.message = "Saving ...."
+      console.log("SAVING", pokemon)
+      this.message = "Ready"
     }
   },
  created(){

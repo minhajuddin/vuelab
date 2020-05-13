@@ -3,19 +3,26 @@
   <h2> {{ pokemon.name }} </h2>
   <img :src='pokemon.sprites.front_default' />
   <img :src='pokemon.sprites.back_default' />
+
+  <button @click='save'>Save</button>
 </div>
 </template>
 
-<script charset="utf-8">
+  <script charset="utf-8">
 export default {
   props: ['pokemon'],
-         computed: {
-           display(){
-             return this.pokemon.name + "!!"
-           }
-         }
+  computed: {
+    display(){
+      return this.pokemon.name + "!!"
+    }
+  },
+  methods: {
+    save(){
+      this.$emit('savePokemon', this.pokemon)
+    }
+  }
 }
-</script>
+  </script>
 
 <style scoped>
 .pokemon-details {
