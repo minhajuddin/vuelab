@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@babel/plugin-transform-runtime": "^7.9.6",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "buefy": "^0.8.18",
     "phoenix": "file:../deps/phoenix",
     "phoenix_html": "file:../deps/phoenix_html",
